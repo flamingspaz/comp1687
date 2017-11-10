@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS `members` (
     `lastName` varchar(50) DEFAULT NULL,
     `email` varchar(254) NOT NULL DEFAULT '',
     `password` varchar(254) NOT NULL DEFAULT '',
-    `salt` varchar(8) NOT NULL DEFAULT '',
     `profileImage` varchar(20) DEFAULT NULL,
     `username` varchar(16) NOT NULL DEFAULT '',
     `active` boolean NOT NULL DEFAULT 0,

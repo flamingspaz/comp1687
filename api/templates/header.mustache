@@ -1,0 +1,21 @@
+<div class="header" id="header">
+    <div class="header_section">
+        <h1>NAME</h1>
+    </div>
+    <div class="header_section">
+        <a href="plogin.php">Log In</a>
+        <a href="pregister.php">Sign up</a>
+    </div>
+    {{#user_details}}
+    <div class="header_section">
+        <span>photo</span>
+        <div class="profile_menu">
+            <ul>
+                <li><a href="#">My Commutes</a></li>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="logout.php">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+    {{/user_details}}
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+    </head>
+    <body>
+        {{> header }}
+        <div class="container" id="registercontainer">
+            <h1>Log in</h1>
+            {{#pwincorrect}}
+                <p>Username or password incorrect</p>
+            {{/pwincorrect}}
+            <form class="userForm" id="registerform" action="login.php" method="post">
+                <input type="text" name="username" value="" placeholder="Username" required maxlength="18" /><br />
+                <input type="password" name="password" value="" placeholder="Password" required maxlength="18" /><br />
+                <button type="submit" name="button">Log in</button>
+            </form>
+        </div>
+        {{> footer }}
+    </body>
+</html>

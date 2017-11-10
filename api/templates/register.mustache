@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Register</title>
+    </head>
+    <body>
+        {{> header}}
+
+        <div class="container" id="registercontainer">
+            <h1>Register</h1>
+            <form class="userForm" id="registerform" action="register.php" method="post">
+                <input type="text" name="username" value="" placeholder="Username" required maxlength="18" /><br />
+                <input type="email" name="email" value="" placeholder="Email address" required maxlength="64" /><br />
+                <input type="password" name="password" value="" placeholder="Password (Min 6 characters)" required maxlength="18" /><br />
+                <button type="submit" name="button">Register</button>
+            </form>
+        </div>
+
+        {{> footer}}
+    </body>
+</html>
