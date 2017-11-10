@@ -1,5 +1,5 @@
 <?php
-    unset($_COOKIE['uid_yousef']);
-    session_destroy();
+    setcookie('uid_yousef' , '' , time() - 3600);
+    //session_destroy();
     header('Location: /index.php', true, 302);
 ?>

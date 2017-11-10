@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `members` (
     UNIQUE (`username`),
     UNIQUE (`email`)
 );
-INSERT INTO `members` (`firstName`, `lastName`, `email`, `password`, `salt`, `username`, `active`, `admin`) VALUES ('Yousef', 'Alam', 'ay417@greenwich.ac.uk', 'temp', 'unused', 'yousef', 1, 1);
+INSERT INTO `members` (`firstName`, `lastName`, `email`, `password`, `username`, `active`, `admin`) VALUES ('Yousef', 'Alam', 'ay417@greenwich.ac.uk', 'temp', 'yousef', 1, 1);
 
 DROP TABLE IF EXISTS `commutes`;
 CREATE TABLE IF NOT EXISTS `commutes` (

@@ -23,11 +23,13 @@ if ($row[0] == crypt($data['password'], $row[0])) {
     $row = $stmt->get_result()->fetch_array(MYSQLI_ASSOC);
     session_start();
     setcookie('uid_yousef', $row['id'], time()+3600, "/", $DOMAIN, 0, 0);
+    setcookie('username_yousef', $data['username'], time()+3600, "/", $DOMAIN, 0, 0);
     if (!$row['active']) {
         header('Location: pverify.php', true, 302);
     }
     // TODO: make this work
     //header('Location: ' . $data['from'], true, 302);
+    header('Location: pprofile.php', true, 302);
     //echo "logged in";
 }
 else {

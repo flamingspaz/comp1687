@@ -16,6 +16,10 @@ $BASE_URL = 'http://' . $DOMAIN . $PATH;
 // Email
 $NOTIFICATION_ADDRESS = 'aa@localhost.localdomain';
 
+// uploads
+$MEDIA_DIR = 'media/uploads/';
+$PROFILE_PHOTOS_DIR = 'media/profiles/';
+
 date_default_timezone_set('UTC');
 
 if ($DEBUG) {

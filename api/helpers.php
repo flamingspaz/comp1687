@@ -23,6 +23,12 @@ function checkAuthnAuthz() {
     }
 }
 
-
+function getUserProfile($uid, $link) {
+  $stmt = $link->prepare("SELECT `firstName`, `lastName`, `username`, `profileImage` FROM `members` WHERE id = ?");
+  $stmt->bind_param("s", $uid);
+  $stmt->execute();
+  return $stmt->get_result()->fetch_array(MYSQLI_ASSOC);
+}
+}
 
 ?>
