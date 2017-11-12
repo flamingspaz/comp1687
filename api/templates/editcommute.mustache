@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit commute</title>
+    {{> headers-common }}
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzfwQwaAOlHeWP-M5Whpe58xA5LDBtwQ&callback=initMap">
+    </script>
+    <script async src="static/js/maps-handler.js" charset="utf-8"></script>
+    <style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+    {{> header }}
+    <div class="container" id="newcommutestep1">
+        <div class="row">
+            <h1>Edit commute</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <h2>Details</h2>
+                <form class="userForm" id="commuteform" action="addcommute.php" method="post">
+                    <div class="form-group">
+                        <p><b>I am...</b> </p>
+                        <input type="radio" id="commuterequest"
+                        name="commutetype" value="requests">
+                        <label for="commuterequest">Requesting a ride</label>
+
+                        <input type="radio" id="commuteprovide"
+                        name="commutetype" value="provides">
+                        <label for="commuteprovide">Providing a ride</label>
+                    </div>
+                    <div class="form-group">
+                        <p><b>on...</b> </p>
+                        <input type="checkbox" id="commuterequest"
+                        name="commutemon">
+                        <label for="commutemon">Mon </label>
+
+                        <input type="checkbox" id="commuterequest"
+                        name="commutetue">
+                        <label for="commutetue">Tue </label>
+
+                        <input type="checkbox" id="commuterequest"
+                        name="commutewed">
+                        <label for="commutewed">Wed </label>
+
+                        <input type="checkbox" id="commuterequest"
+                        name="commutethu">
+                        <label for="commutethu">Thu </label>
+
+                        <input type="checkbox" id="commuterequest"
+                        name="commutefri">
+                        <label for="commutefri">Fri </label>
+                        <input type="time" name="time" value="" placeholder="09:00" required /><br />
+                    </div>
+                    <textarea name="notes" rows="8" cols="80" placeholder="Enter any other details here" class="form-control">{{notes}}</textarea><br />
+                    <input type="text" name="startloc" id="startloc" value="" required hidden/>
+                    <input type="text" name="endloc" id="endloc" value="" required hidden/>
+                    <div id="map"></div>
+                    <button type="submit" class="btn btn-primary" name="button"><i class="fa fa-floppy-o"></i> Save post</button>
+                    <a href="deletecommute.php?id={{commuteId}}"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i> Remove this commute</button></a>
+                </form>
+            </div>
+            <div class="col-xs-6">
+                <h2>Photos <a href="paddcommutephoto.php?id={{commuteId}}"><button type="button" class="btn btn-primary">+</button></a></h2>
+
+                {{^commute_photos}}
+                <p>No photos have been uploaded for this commute</p>
+                {{/commute_photos}}
+                {{#commute_photos}}
+<div class="col-xs-6">
+    <a href="/media/uploads/{{ name }}">
+        <span class="imagebox">
+            <img width="200" src="/media/uploads/{{ name }}" alt="" />
+        </span>
+        <a href="removephoto.php?id={{id}}"><button type="button" class="btn btn-secondary"><i class="fa fa-trash-o"></i></button></a>
+    </a><br /><br />
+</div>
+                {{/commute_photos}}
+            </div>
+        </div>
+    </div>
+    {{> footer }}
+</body>
+</html>

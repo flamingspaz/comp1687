@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Commutes</title>
+    {{> headers-common }}
+</head>
+<body>
+    {{> header }}
+
+    <div class="container">
+        <div class="row">
+            <h1>My Commutes <a href="pnewcommute.php"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button></a></h1>
+        </div>
+        {{#commutes}}
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="pcommute.php?id={{id}}"><h2>Commute {{id}}</h2></a>
+                <p><i>Arrives by {{arriveBy}}  </i><a href="peditcommute.php?id={{id}}"><button type="button" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i></button></a></p>
+            </div>
+        </div>
+        {{/commutes}}
+    </div>
+
+    {{> footer }}
+</body>
+</html>

@@ -1,23 +1,29 @@
-<div class="header" id="header">
-    <div class="header_section">
-        <h1><a href="index.php">NAME</a></h1>
-    </div>
-    {{#user_details}}
-    <div class="header_section">
-        <a href="pprofile.php"><img width="50" height="50" src="{{#profile_photo}}/media/uploads/{{/profile_photo}}{{ profile_photo }}{{^profile_photo}}/static/img/default_profile.jpg{{/profile_photo}}" alt="Your profile photo"></a>
-        <div class="profile_menu">
-            <ul>
-                <li><a href="#">My Commutes</a></li>
-                <li><a href="pprofile.php">My Profile</a></li>
-                <li><a href="logout.php">Sign out</a></li>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php"><img src="static/img/web-logo.gif" alt="logo" height="50"></a>
+        </div>
+        {{#user_details}}
+        <div class="header_section">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img width="50" height="50" class="circle-image" src="{{#profile_photo}}/media/uploads/{{/profile_photo}}{{ profile_photo }}{{^profile_photo}}/static/img/default_profile.jpg{{/profile_photo}}" alt="Your profile photo">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="pmycommutes.php"><i class="fa fa-address-card"></i> My Commutes</a>
+                    <a class="dropdown-item" href="pprofile.php"><i class="fa fa-user"></i> My Profile</a>
+                    <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i> Sign out</a>
+                </div>
+            </div>
+        </div>
+        {{/user_details}}
+        {{^user_details}}
+        <div class="header_section">
+            <ul class="nav navbar-nav">
+                <li><a href="plogin.php">Log In</a></li>
+                <li><a href="pregister.php">Sign up</a></li>
             </ul>
         </div>
+        {{/user_details}}
     </div>
-    {{/user_details}}
-    {{^user_details}}
-    <div class="header_section">
-        <a href="plogin.php">Log In</a>
-        <a href="pregister.php">Sign up</a>
-    </div>
-    {{/user_details}}
-</div>
+</nav>

@@ -6,14 +6,13 @@
 </head>
 <body>
   {{> header }}
-
-  <h1>Add commute photo</h1>
   <div>
-    <div class="profilesection">
+    <div class="container">
+    <h1>Add commute photo</h1>
       <form class="userForm" id="registerform" action="addcommutephoto.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="photo" id="photo" /><span>or <a href="#">delete photo</a></span><br />
-          <input type="text" name="commuteId" value="{{commuteId}}" />
-          <button type="submit" name="button">Save</button>
+          <input type="file" name="photo" id="photo" /><span><br /><br /><br />
+          <input type="text" name="commuteId" value="{{commuteId}}" hidden/>
+          <button type="submit" name="button" class="btn btn-primary">Save</button>
       </form>
     </div>
   </div>

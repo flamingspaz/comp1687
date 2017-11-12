@@ -46,7 +46,7 @@ if ($uploadOk == 0) {
         $stmt = $link->prepare("INSERT INTO `images` (commuteId,name) VALUES (?, ?)");
         $stmt->bind_param("is", $commuteId, $newname);
         $stmt->execute();
-        header("Location: /pcommute.php?id=" . $commuteId, true, 302);
+        header("Location: /peditcommute.php?id=" . $commuteId, true, 302);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

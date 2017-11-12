@@ -6,7 +6,15 @@
     </head>
     <body>
         {{> header }}
-        <h1>THIS IS THE HOMEPAGE THAT DOES NOTHING</h1>
+        <div class="container">
+            {{#error}}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {{/error}}
+    <h1>THIS IS A HOMEPAGE THAT DOES NOTHING</h1>
+
+        </div>
         {{> footer }}
     </body>
 </html>

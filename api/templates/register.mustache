@@ -11,11 +11,11 @@
         <div class="container" id="registercontainer">
             <h1>Register</h1>
             <form class="userForm" id="registerform" action="register.php" method="post">
-                <input type="text" name="username" value="" placeholder="Username" required maxlength="18" /><br />
-                <input type="email" name="email" value="" placeholder="Email address" required maxlength="64" /><br />
-                <input type="password" name="password" value="" placeholder="Password (Min 6 characters)" required maxlength="18" /><br />
+                <input type="text" name="username" value="" class="form-control" placeholder="Username" required maxlength="18" /><br />
+                <input type="email" name="email" value="" class="form-control" placeholder="Email address" required maxlength="64" /><br />
+                <input type="password" name="password" value="" class="form-control" placeholder="Password (Min 6 characters)" required maxlength="18" /><br />
                 <div class="g-recaptcha" data-sitekey="6LeYMzgUAAAAAPJtOat9jbJ__g4HE6d5pKjuGmTn"></div><br />
-                <button type="submit" name="button">Register</button>
+                <button type="submit" class="btn btn-primary" name="button"><i class="fa fa-sign-in"></i> Register</button>
             </form>
         </div>
 

@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Login</title>
-        {{> headers-common }}
-    </head>
-    <body>
-        {{> header }}
-        <div class="container" id="registercontainer">
-            <h1>Log in</h1>
-            {{#pwincorrect}}
-                <p>Username or password incorrect</p>
-            {{/pwincorrect}}
-            <form class="userForm" id="registerform" action="login.php" method="post">
-                <input type="text" name="username" value="{{ username }}" placeholder="Username" required maxlength="18" /><br />
-                <input type="password" name="password" value="" placeholder="Password" required maxlength="18" /><br />
-                <button type="submit" name="button">Log in</button>
-            </form>
+<head>
+    <title>Login</title>
+    {{> headers-common }}
+</head>
+<body>
+    {{> header }}
+    <div class="container" id="registercontainer">
+        <h1>Log in</h1>
+        {{#pwincorrect}}
+        <div class="alert alert-danger" role="alert">
+            Username or password incorrect
         </div>
-        {{> footer }}
-    </body>
+        {{/pwincorrect}}
+        <form class="userForm" id="registerform" action="login.php" method="post" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" value="{{ username }}" placeholder="Username" required maxlength="18" /><br />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" value="" placeholder="Password" required maxlength="18" /><br />
+            </div>
+
+            <button type="submit" name="button" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+        </form>
+    </div>
+    {{> footer }}
+</body>
 </html>

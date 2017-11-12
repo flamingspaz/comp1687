@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Commute</title>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzfwQwaAOlHeWP-M5Whpe58xA5LDBtwQ&callback=initCommuteMap">
-        </script>
-        <script async src="static/js/maps-handler.js" charset="utf-8"></script>
-        <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-        </style>
-        {{> headers-common }}
-    </head>
-    <body>
-{{> header }}
-<div id="map"></div>
-<div class="commute_details">
-    <h1>COMMUTE #<span id="commuteId">{{commuteId}}</span> </h1>
-    <h2>Details about this commute</h2>
-    <h2>{{provides}}</h2>
-    <p>Arrives by {{arriveby}} on {{days}}</p>
-    <p>{{notes}}</p>
-    <h2>Photos</h2>
-    {{^commute_photos}}
-    <p>No photos have been uploaded for this commute</p>
-    {{/commute_photos}}
-    {{#commute_photos}}
-    <a href="/media/uploads/{{ name }}">
-    <span class="imagebox">
-        <img width="200" src="/media/uploads/{{ name }}" alt="" />
-    </span>
-    </a>
-    {{/commute_photos}}
-</div>
-<div class="commuter_details">
-    {{^user_details}}
-    <h3>Log in or sign up to see user information</h3>
-    {{/user_details}}
-    {{#user_details}}
-    <h3>User details</h3>
-    <img width="100" height="100" alt="{{firstname}} profile photo" src="{{#commuter_profile_photo}}/media/uploads/{{/commuter_profile_photo}}{{ commuter_profile_photo }}{{^commuter_profile_photo}}/static/img/default_profile.jpg{{/commuter_profile_photo}}">
-    <p>{{commuter_username}}</p>
-    {{/user_details}}
-</div>
-{{> footer }}
-    </body>
+<head>
+    <title>Commute</title>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzfwQwaAOlHeWP-M5Whpe58xA5LDBtwQ&callback=initCommuteMap">
+    </script>
+    <script async src="static/js/maps-handler.js" charset="utf-8"></script>
+    <style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    </style>
+    {{> headers-common }}
+</head>
+<body>
+    {{> header }}
+    <div id="map"></div><br /><br />
+    <div class="container">
+<div class="row">
+    <h1>COMMUTE #<span id="commuteId">{{commuteId}}</span>{{#owner}}&nbsp;&nbsp;<a href="peditcommute.php?id={{commuteId}}"><button type="button" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i></button></a>{{/owner}}</h1>
+</div>        <div class="row">
+            <div class="col-xs-6">
+                {{^user_details}}
+                <h3>Log in or sign up to see user information</h3>
+                {{/user_details}}
+                {{#user_details}}
+                <h3>User details</h3>
+                <img width="100" height="100" class="circle-image" alt="{{firstname}} profile photo" src="{{#commuter_profile_photo}}/media/uploads/{{/commuter_profile_photo}}{{ commuter_profile_photo }}{{^commuter_profile_photo}}/static/img/default_profile.jpg{{/commuter_profile_photo}}">
+                <p><b>{{commuter_username}}</b></p>
+                {{/user_details}}
+                <br><br><br><br>
+                <h2>Details about this commute</h2>
+                <h4>{{provides}}</h4>
+                <p><i>Arrives by {{arriveby}} on {{days}}</i></p>
+                <p>{{notes}}</p>
+            </div>
+            <div class="col-xs-6">
+                <h2>Photos</h2>
+                {{^commute_photos}}
+                <p>No photos have been uploaded for this commute</p>
+                {{/commute_photos}}
+                {{#commute_photos}}
+                <a href="/media/uploads/{{ name }}">
+                    <span class="imagebox">
+                        <img width="200" src="/media/uploads/{{ name }}" alt="" />
+                    </span>
+                </a>
+                {{/commute_photos}}
+            </div>
+        </div>
+
+    </div>
+    {{> footer }}
+</body>
 </html>

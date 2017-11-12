@@ -53,12 +53,13 @@
                 <label for="commutefri">Fri </label>
                 <input type="time" name="time" value="" placeholder="09:00" required /><br />
             </div>
-            <textarea name="notes" rows="8" cols="80" placeholder="Enter any other details here"></textarea><br />
-            <input type="text" name="startloc" id="startloc" value="" required/>
-            <input type="text" name="endloc" id="endloc" value="" required/>
-            <button type="submit" name="button">Create post</button>
+            <textarea name="notes" rows="8" cols="80" class="form-control" placeholder="Enter any other details here"></textarea><br />
+            <input type="text" name="startloc" id="startloc" value="" required hidden />
+            <input type="text" name="endloc" id="endloc" value="" required hidden />
+            <div id="map"></div><br />
+            <button type="submit" class="btn btn-primary" name="button"><i class="fa fa-plus-circle"></i> Create post</button>
         </form>
-        <div id="map"></div>
+
     </div>
     {{> footer }}
 </body>
