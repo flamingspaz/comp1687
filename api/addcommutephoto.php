@@ -1,14 +1,18 @@
 <?php
 // adapted from https://www.w3schools.com/php/php_file_upload.asp
 require_once('helpers.php');
-checkAuthnAuthz();
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+require_once('db.php');
+checkAuthnAuthz($link);
+$user = $_COOKIE['uid_yousef'];
+$commuteId = $_POST['commuteId'];
+$imageFileType = pathinfo(basename($_FILES["photo"]["name"]),PATHINFO_EXTENSION);
+$newname = bin2hex(random_bytes(6)) . '.' . $imageFileType;
+$target_dir = $MEDIA_DIR;
+$target_file = $target_dir . basename($newname);
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    $check = getimagesize($_FILES["photo"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -23,7 +27,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["photo"]["size"] > $MAX_UPLOAD_FILESIZE) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -38,8 +42,11 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+        $stmt = $link->prepare("INSERT INTO `images` (commuteId,name) VALUES (?, ?)");
+        $stmt->bind_param("is", $commuteId, $newname);
+        $stmt->execute();
+        header("Location: /pcommute.php?id=" . $commuteId, true, 302);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

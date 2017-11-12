@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Register</title>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         {{> headers-common }}
     </head>
     <body>
@@ -13,6 +14,7 @@
                 <input type="text" name="username" value="" placeholder="Username" required maxlength="18" /><br />
                 <input type="email" name="email" value="" placeholder="Email address" required maxlength="64" /><br />
                 <input type="password" name="password" value="" placeholder="Password (Min 6 characters)" required maxlength="18" /><br />
+                <div class="g-recaptcha" data-sitekey="6LeYMzgUAAAAAPJtOat9jbJ__g4HE6d5pKjuGmTn"></div><br />
                 <button type="submit" name="button">Register</button>
             </form>
         </div>

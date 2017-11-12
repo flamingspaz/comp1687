@@ -13,11 +13,11 @@
       <h2 class="unset">{{ firstname }} {{ lastname }}</h2><span>({{ username }})</span>
     </div>
     <div class="profilesection">
-      <img width="100" height="100" src="{{ profile_photo }}{{^profile_photo}}/static/img/default_profile.jpg{{/profile_photo}}" alt="">
-      <form class="userForm" id="registerform" action="register.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="photo" id="photo" /><br />
-          <input type="text" name="firstname" value="" placeholder="First Name" required maxlength="64" /><br />
-          <input type="text" name="lastanme" value="" placeholder="Last Name" required maxlength="64" /><br />
+      <img width="100" height="100" src="{{#profile_photo}}/media/uploads/{{/profile_photo}}{{ profile_photo }}{{^profile_photo}}/static/img/default_profile.jpg{{/profile_photo}}" alt="">
+      <form class="userForm" id="registerform" action="updateprofile.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="photo" id="photo" /><span>or <a href="#">delete photo</a></span><br /> 
+          <input type="text" name="firstname" value="{{ firstname }}" placeholder="First Name" maxlength="64" /><br />
+          <input type="text" name="lastname" value="{{ lastname }}" placeholder="Last Name" maxlength="64" /><br />
           <button type="submit" name="button">Save</button>
       </form>
     </div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New commute</title>
+    {{> headers-common }}
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzfwQwaAOlHeWP-M5Whpe58xA5LDBtwQ&callback=initMap">
+    </script>
+    <script async src="static/js/maps-handler.js" charset="utf-8"></script>
+    <style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+    {{> header }}
+    <div class="container" id="newcommutestep1">
+        <h1>Add a commute</h1>
+        <form class="userForm" id="commuteform" action="addcommute.php" method="post">
+            <div>
+                <p><b>I am...</b> </p>
+                <input type="radio" id="commuterequest"
+                name="commutetype" value="requests">
+                <label for="contactChoice1">Requesting a ride</label>
+
+                <input type="radio" id="commuteprovide"
+                name="commutetype" value="provides">
+                <label for="contactChoice2">Providing a ride</label>
+            </div>
+            <div>
+                <p><b>on...</b> </p>
+                <input type="checkbox" id="commuterequest"
+                name="commutemon">
+                <label for="commutemon">Mon </label>
+
+                <input type="checkbox" id="commuterequest"
+                name="commutetue">
+                <label for="commutetue">Tue </label>
+
+                <input type="checkbox" id="commuterequest"
+                name="commutewed">
+                <label for="commutewed">Wed </label>
+
+                <input type="checkbox" id="commuterequest"
+                name="commutethu">
+                <label for="commutethu">Thu </label>
+
+                <input type="checkbox" id="commuterequest"
+                name="commutefri">
+                <label for="commutefri">Fri </label>
+                <input type="time" name="time" value="" placeholder="09:00" required /><br />
+            </div>
+            <textarea name="notes" rows="8" cols="80" placeholder="Enter any other details here"></textarea><br />
+            <input type="text" name="startloc" id="startloc" value="" required/>
+            <input type="text" name="endloc" id="endloc" value="" required/>
+            <button type="submit" name="button">Create post</button>
+        </form>
+        <div id="map"></div>
+    </div>
+    {{> footer }}
+</body>
+</html>

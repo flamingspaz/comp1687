@@ -5,12 +5,13 @@ checkAuthnAuthz($link);
 if (isset($_COOKIE['uid_yousef'])) {
     $user = getUserProfile($_COOKIE['uid_yousef'], $link);
 
-    echo $m->render('profile', array('firstname' => $user['firstName'],
+    echo $m->render('addcommutephoto', array('firstname' => $user['firstName'],
                                      'lastname' => $user['lastName'],
                                      'username' => $user['username'],
                                      'profile_photo' => $user['profileImage'],
                                      'user_details' => isset($_COOKIE['uid_yousef']),
-                                     'uid' => $_COOKIE['uid_yousef']));
+                                     'uid' => $_COOKIE['uid_yousef'],
+                                     'commuteId' => $_GET['id']));
 }
 else {
     header('Location: /plogin.php', true, 302);

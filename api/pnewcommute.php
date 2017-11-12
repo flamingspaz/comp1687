@@ -5,7 +5,7 @@ checkAuthnAuthz($link);
 if (isset($_COOKIE['uid_yousef'])) {
     $user = getUserProfile($_COOKIE['uid_yousef'], $link);
 
-    echo $m->render('profile', array('firstname' => $user['firstName'],
+    echo $m->render('newcommute', array('firstname' => $user['firstName'],
                                      'lastname' => $user['lastName'],
                                      'username' => $user['username'],
                                      'profile_photo' => $user['profileImage'],

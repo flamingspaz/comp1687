@@ -16,36 +16,58 @@ $data = $_POST;
 //    return errorResponse('invalid json');
 //}
 
-// do things to the password, but override php defaults to use bcrypt
-$password = genPasswordHash($data["password"]);
+// check recaptcha
+// adapted from https://gist.githubusercontent.com/kaplanmaxe/b3e4fe4ee3e286a4f8d815660daa57e2/raw/fa726b8aa0dc46b3fc2c0e4cd986cba8012cd56b/mail.php
+$response = $_POST["g-recaptcha-response"];
+$redata = array(
+    'secret' => $RECAPTCHA_SECRET,
+    'response' => $_POST["g-recaptcha-response"]
+);
+$options = array(
+    'http' => array (
+        'method' => 'POST',
+        'header'  => "Content-Type: application/x-www-form-urlencoded",
+        'content' => http_build_query($redata)
+    )
+);
+$context  = stream_context_create($options);
+$verify = file_get_contents($RECAPTCHA_URL, false, $context);
+$captcha_success=json_decode($verify);
 
-$stmt = $link->prepare("INSERT INTO `members` (email,password,username)
-                        VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $data["email"], $password, $data["username"]);
-$stmt->execute();
-// get the ID of the user we just made
-$id = mysqli_insert_id($link);
+if ($captcha_success->success==false) {
+    echo "<p>You are a bot! Go away!</p>";
+} else if ($captcha_success->success==true) {
+    // do things to the password, but override php defaults to use bcrypt
+    $password = genPasswordHash($data["password"]);
 
-// generate a verification token and store it
-$token = rand(10000,99999);
-$expiryDate = new DateTime("+24 hours");
-$expiryDatef = $expiryDate->format("Y-m-d H:i:s");
-$stmt = $link->prepare("INSERT INTO `tokens` (userId,token,expires)
-                        VALUES (?, ?, ?)");
-$stmt->bind_param("iis", $id, $token, $expiryDatef);
-$stmt->execute();
+    $stmt = $link->prepare("INSERT INTO `members` (email,password,username)
+                            VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $data["email"], $password, $data["username"]);
+    $stmt->execute();
+    // get the ID of the user we just made
+    $id = mysqli_insert_id($link);
 
-// mail token to user
-$to      = $data['email'];
-$subject = 'Verify your account';
-$message = $m->render('verificationemail', array('token' => $token, 'site' => $BASE_URL));
-$headers = "From: $NOTIFICATION_ADDRESS\r\nX-Mailer: PHP/5.6\r\nContent-Type: text/html; charset=ISO-8859-1\r\n";
-mail($to, $subject, $message, $headers);
+    // generate a verification token and store it
+    $token = rand(10000,99999);
+    $expiryDate = new DateTime("+24 hours");
+    $expiryDatef = $expiryDate->format("Y-m-d H:i:s");
+    $stmt = $link->prepare("INSERT INTO `tokens` (userId,token,expires)
+                            VALUES (?, ?, ?)");
+    $stmt->bind_param("iis", $id, $token, $expiryDatef);
+    $stmt->execute();
 
-session_start();
+    // mail token to user
+    $to      = $data['email'];
+    $subject = 'Verify your account';
+    $message = $m->render('verificationemail', array('token' => $token, 'site' => $BASE_URL));
+    $headers = "From: $NOTIFICATION_ADDRESS\r\nX-Mailer: PHP/5.6\r\nContent-Type: text/html; charset=ISO-8859-1\r\n";
+    mail($to, $subject, $message, $headers);
 
-/// $_SESSION['session_token'] = bin2hex(random_bytes(32));
-setcookie('uid_yousef', $id, time()+3600, "/", $DOMAIN, 0, 0);
-// go to verify.php
-header('Location: /pverify.php', true, 302);
+    session_start();
+
+    /// $_SESSION['session_token'] = bin2hex(random_bytes(32));
+    setcookie('uid_yousef', $id, time()+3600, "/", $DOMAIN, 0, 0);
+    // go to verify.php
+    header('Location: /pverify.php', true, 302);
+}
 ?>

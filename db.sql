@@ -19,8 +19,8 @@ DROP TABLE IF EXISTS `commutes`;
 CREATE TABLE IF NOT EXISTS `commutes` (
     `id` int NOT NULL AUTO_INCREMENT,
     `userId` int NOT NULL,
-    `startPoint` varchar(14) NOT NULL,
-    `destinationPoint` varchar(14) NOT NULL,
+    `startPoint` varchar(64) NOT NULL,
+    `destinationPoint` varchar(64) NOT NULL,
     `arriveBy` time,
     `provides` boolean NOT NULL DEFAULT 0,
     `notes` text DEFAULT NULL,
