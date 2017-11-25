@@ -43,7 +43,10 @@ if ($captcha_success->success==false) {
     $stmt = $link->prepare("INSERT INTO `members` (email,password,username)
                             VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $data["email"], $password, $data["username"]);
-    $stmt->execute();
+    $success = $stmt->execute();
+    if (!$success) {
+        header('Location: /pregister.php?error=usernametaken', true, 302);
+    }
     // get the ID of the user we just made
     $id = mysqli_insert_id($link);
 

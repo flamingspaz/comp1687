@@ -27,7 +27,7 @@ function checkAuthnAuthz($link) {
 
 function getUserProfile($uid, $link) {
 // Grab user info for the header
-  $stmt = $link->prepare("SELECT `firstName`, `lastName`, `username`, `profileImage` FROM `members` WHERE id = ?");
+  $stmt = $link->prepare("SELECT `firstName`, `lastName`, `username`, `profileImage`, `email` FROM `members` WHERE id = ?");
   $stmt->bind_param("s", $uid);
   $stmt->execute();
   return $stmt->get_result()->fetch_array(MYSQLI_ASSOC);

@@ -7,12 +7,6 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzfwQwaAOlHeWP-M5Whpe58xA5LDBtwQ&callback=initMap">
     </script>
     <script async src="static/js/maps-handler.js" charset="utf-8"></script>
-    <style>
-    #map {
-        height: 400px;
-        width: 100%;
-    }
-    </style>
 
 </head>
 <body>
@@ -53,7 +47,7 @@
                 <label for="commutefri">Fri </label>
                 <input type="time" name="time" value="" placeholder="09:00" required /><br />
             </div>
-            <textarea name="notes" rows="8" cols="80" class="form-control" placeholder="Enter any other details here"></textarea><br />
+            <textarea name="notes" rows="8" cols="80" class="form-control" placeholder="Enter some details about your commute!"></textarea><br />
             <input type="text" name="startloc" id="startloc" value="" required hidden />
             <input type="text" name="endloc" id="endloc" value="" required hidden />
             <div id="map"></div><br />

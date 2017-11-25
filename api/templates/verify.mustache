@@ -9,12 +9,16 @@
 
         <div class="container" id="tokenform">
             <h1>Verify your account</h1>
+            {{#vcincorrect}}
+            <div class="alert alert-danger" role="alert">
+                Verification code incorrect
+            </div>
+            {{/vcincorrect}}
             <p>We've emailed you a 5-digit code to enter below:</p>
             <form class="" action="verify.php" method="post">
-                <input type="number" name="token" placeholder="00000" maxlength="5" required /><br />
-                <button type="submit" name="button">Verify</button>
+                <input type="number" name="token" placeholder="00000" maxlength="5" required /><br /><br />
+                <button type="submit" class="btn btn-primary" name="button">Verify</button>
             </form>
-            <p>or <a href="#">send another code</a></p>
         </div>
 
 

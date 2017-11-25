@@ -25,7 +25,6 @@ $stmt = $link->prepare("SELECT id,name FROM `images` WHERE commuteId = ?");
 $stmt->bind_param("i", $_GET['id']);
 $stmt->execute();
 $photosrow = mysqli_fetch_all($stmt->get_result(), MYSQLI_ASSOC);
-//echo $photosrow[1]['name'];
 $commuter = getUserProfile($row['userId'], $link);
 
 echo $m->render('commute', array('firstname' => $user['firstName'],
@@ -42,6 +41,7 @@ echo $m->render('commute', array('firstname' => $user['firstName'],
                                  'notes' => $row['notes'],
                                  'days' => $row['daysAvailable'],
                                  'commuter_username' => $commuter['username'],
+                                 'commuter_email' => $commuter['email'],
                                  'commuter_profile_photo' => $commuter['profileImage'],
                                  'commute_photos' => $photosrow,
                                  'owner' => $owner

@@ -10,6 +10,11 @@
 
         <div class="container" id="registercontainer">
             <h1>Register</h1>
+            {{#usernametaken}}
+            <div class="alert alert-danger" role="alert">
+                Verification code incorrect
+            </div>
+            {{/usernametaken}}
             <form class="userForm" id="registerform" action="register.php" method="post">
                 <input type="text" name="username" value="" class="form-control" placeholder="Username" required maxlength="18" /><br />
                 <input type="email" name="email" value="" class="form-control" placeholder="Email address" required maxlength="64" /><br />

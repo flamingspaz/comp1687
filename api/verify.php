@@ -40,6 +40,14 @@ if ($verified) {
     $stmt->bind_param("i", $user);
     $stmt->execute();
 }
-header('Content-Type: application/json');
-echo "{\"success\": \"$verified\", \"message\":\"$message\"}";
+//header('Content-Type: application/json');
+//echo "{\"success\": \"$verified\", \"message\":\"$message\"}";
+
+if ($verified) {
+    header("Location: /pprofile.php", true, 302);
+}
+else {
+    header("Location: /pverify.php?error=vcincorrect", true, 302);
+}
+
 ?>

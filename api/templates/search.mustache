@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Commutes</title>
+    {{> headers-common }}
+</head>
+<body>
+    {{> header }}
+
+    <div class="container">
+        <div class="row">
+            <h1>Results for "{{query}}"</h1>
+        </div>
+        {{#results}}
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="pcommute.php?id={{id}}"><h2>Commute {{id}}</h2></a>
+                <p><i>Arrives by {{arriveBy}}  </i> - {{notes}}</p>
+            </div>
+        </div>
+        {{/results}}
+        {{^results}}
+        <h3>No results found</h3>
+
+        {{/results}}
+    </div>
+
+    {{> footer }}
+</body>
+</html>

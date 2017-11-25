@@ -52,3 +52,4 @@ ALTER TABLE `images`
     ADD FOREIGN KEY (`commuteId`) REFERENCES `commutes`(`id`);
 ALTER TABLE `tokens`
     ADD FOREIGN KEY (`userId`) REFERENCES `members`(`id`);
+ALTER TABLE commutes ADD FULLTEXT(notes);

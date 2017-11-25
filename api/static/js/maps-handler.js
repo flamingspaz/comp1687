@@ -64,3 +64,49 @@ function initCommuteMap(){
         }
     }
 }
+
+function initCommuteEditMap(){
+    var gre = {lat: 51.4826, lng: 0.0077};
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: gre
+    });
+    httpRequest = new XMLHttpRequest();
+    var data;
+    if (!httpRequest) {
+        alert('failed to load map');
+        return false;
+    }
+    httpRequest.onload = setUpMaps;
+    httpRequest.open('GET', 'commutedetails.php?id=' + document.getElementById('commuteId').innerText);
+    httpRequest.send();
+    function setUpMaps() {
+        var response = JSON.parse(httpRequest.responseText);
+        if (response.success) {
+            var startmarker = new google.maps.Marker({
+                map: map,
+                position: {lat: response.data.startLat - 0, lng: response.data.startLng - 0},
+                title: "Start point",
+                label: "A"
+            });
+            var endmarker = new google.maps.Marker({
+                map: map,
+                position: {lat: response.data.endLat - 0, lng: response.data.endLng - 0},
+                title: "End point",
+                label: "B"
+            });
+            var currMarker = startmarker;
+            google.maps.event.addListener(map, 'click', function(event) {
+                currMarker.setPosition(event.latLng);
+                if (currMarker == startmarker) {
+                    document.getElementById('startloc').value = event.latLng;
+                    currMarker = endmarker;
+                }
+                else {
+                    document.getElementById('endloc').value = event.latLng;
+                    currMarker = startmarker;
+                }
+            });
+        }
+    }
+}
