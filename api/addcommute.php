@@ -25,16 +25,16 @@ if ($data['commutetype'] == 'provides') {
 }
 
 $stmt = $link->prepare("INSERT INTO `commutes` (userId,startPoint,destinationPoint,arriveBy,provides,notes,daysAvailable)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+VALUES (?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("isssiss", $user,
-                             trim($data['startloc'], '()'),
-                             trim($data['endloc'], '()'),
-                             formatTime($data['time']),
-                             $provides,
-                             $data['notes'],
-                             implode(',', $daysSelected));
+trim($data['startloc'], '()'),
+trim($data['endloc'], '()'),
+formatTime($data['time']),
+$provides,
+$data['notes'],
+implode(',', $daysSelected));
 $stmt->execute();
 // get the ID of the user we just made
 $id = mysqli_insert_id($link);
-header("Location: /pcommute.php?id=$id", true, 302);
+header("Location: pcommute.php?id=$id", true, 302);
 ?>

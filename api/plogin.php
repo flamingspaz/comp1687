@@ -11,7 +11,7 @@ if (!isset($_COOKIE['uid_yousef'])) {
                                     'username' => $username));
 }
 else {
-    header('Location: /pprofile.php', true, 302);
+    header('Location: pprofile.php', true, 302);
 }
 
 ?>

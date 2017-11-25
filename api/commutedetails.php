@@ -11,4 +11,4 @@ $start = explode(', ',$row['startPoint'],2);
 $end = explode(', ',$row['destinationPoint'],2);
 $data = ['success' => true, 'data' => ['startLat' => $start[0], 'startLng' => $start[1], 'endLat' => $end[0], 'endLng' => $end[1]]];
 echo json_encode($data);
- ?>
+?>

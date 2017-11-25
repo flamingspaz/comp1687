@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `members` (
     UNIQUE (`username`),
     UNIQUE (`email`)
 );
-INSERT INTO `members` (`firstName`, `lastName`, `email`, `password`, `username`, `active`, `admin`) VALUES ('Yousef', 'Alam', 'ay417@greenwich.ac.uk', 'temp', 'yousef', 1, 1);
+--INSERT INTO `members` (`firstName`, `lastName`, `email`, `password`, `username`, `active`, `admin`) VALUES ('Yousef', 'Alam', 'ay417@greenwich.ac.uk', 'temp', 'yousef', 1, 1);
 
 DROP TABLE IF EXISTS `commutes`;
 CREATE TABLE IF NOT EXISTS `commutes` (
@@ -52,4 +52,5 @@ ALTER TABLE `images`
     ADD FOREIGN KEY (`commuteId`) REFERENCES `commutes`(`id`);
 ALTER TABLE `tokens`
     ADD FOREIGN KEY (`userId`) REFERENCES `members`(`id`);
-ALTER TABLE commutes ADD FULLTEXT(notes);
+ALTER TABLE `commutes`
+    ADD FULLTEXT(notes);

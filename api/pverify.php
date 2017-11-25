@@ -5,6 +5,6 @@ if (isset($_COOKIE['uid_yousef'])) {
                                     'vcincorrect' => isset($_GET['error'])));
 }
 else {
-    header('Location: /pregister.php', true, 302);
+    header('Location: pregister.php', true, 302);
 }
  ?>

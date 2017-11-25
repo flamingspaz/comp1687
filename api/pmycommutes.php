@@ -6,7 +6,7 @@ if (isset($_COOKIE['uid_yousef'])) {
     $user = getUserProfile($_COOKIE['uid_yousef'], $link);
 }
 else {
-    header('Location: /plogin.php', true, 302);
+    header('Location: plogin.php', true, 302);
 }
 
 $stmt = $link->prepare("SELECT id,arriveBy,provides,notes,daysAvailable FROM `commutes` WHERE userId = ?");

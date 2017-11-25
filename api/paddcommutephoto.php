@@ -14,7 +14,7 @@ if (isset($_COOKIE['uid_yousef'])) {
                                      'commuteId' => $_GET['id']));
 }
 else {
-    header('Location: /plogin.php', true, 302);
+    header('Location: plogin.php', true, 302);
 }
 
  ?>

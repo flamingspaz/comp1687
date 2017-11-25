@@ -13,6 +13,7 @@ ORDER BY MATCH(notes) AGAINST(?) DESC");
 $stmt->bind_param("ss", $_GET['text'], $_GET['text']);
 $stmt->execute();
 $row = mysqli_fetch_all($stmt->get_result(), MYSQLI_ASSOC);
+setcookie('psearch_yousef', $_GET['text'], time()+3600, $BASE_PATH, $DOMAIN, 0, 0);
 
 echo $m->render('search', array('firstname' => $user['firstName'],
                                  'lastname' => $user['lastName'],

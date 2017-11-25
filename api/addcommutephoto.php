@@ -40,13 +40,13 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+    // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
         $stmt = $link->prepare("INSERT INTO `images` (commuteId,name) VALUES (?, ?)");
         $stmt->bind_param("is", $commuteId, $newname);
         $stmt->execute();
-        header("Location: /peditcommute.php?id=" . $commuteId, true, 302);
+        header("Location: peditcommute.php?id=" . $commuteId, true, 302);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

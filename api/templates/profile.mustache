@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Profile</title>
-  {{> headers-common }}
+    <title>Profile</title>
+    {{> headers-common }}
 </head>
 <body>
-  {{> header }}
+    {{> header }}
 
-<div class="container">
-    <h1>Your profile</h1>
-    <div>
-      <div class="profilesection">
-        <h2 class="unset">{{ firstname }} {{ lastname }} <span>({{ username }})</span></h2>
-      </div>
-      <div class="profilesection">
-        <img width="100" height="100" class="circle-image" src="{{#profile_photo}}/media/uploads/{{/profile_photo}}{{ profile_photo }}{{^profile_photo}}/static/img/default_profile.jpg{{/profile_photo}}" alt=""><br />
-        <form class="userForm" id="registerform" action="updateprofile.php" method="post" enctype="multipart/form-data">
-<div class="form-group">
-    <span><input type="file" name="photo" id="photo" /> or <a href="#">delete photo</a></span><br /><br /><br />
-    <input type="text" name="firstname" value="{{ firstname }}" placeholder="First Name" maxlength="64" class="form-control" /><br />
-    <input type="text" name="lastname" value="{{ lastname }}" placeholder="Last Name" maxlength="64" class="form-control" /><br />
-    <button type="submit" name="button" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
-</div>
-        </form>
-      </div>
+    <div class="container">
+        <h1>Your profile</h1>
+        <div>
+            <div class="profilesection">
+                <h2 class="unset">{{ firstname }} {{ lastname }} <span>({{ username }})</span></h2>
+            </div>
+            <div class="profilesection">
+                <img width="100" height="100" class="circle-image" src="{{#profile_photo}}media/uploads/{{/profile_photo}}{{ profile_photo }}{{^profile_photo}}static/img/default_profile.jpg{{/profile_photo}}" alt=""><br />
+                <form class="userForm" id="registerform" action="updateprofile.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <span><input type="file" name="photo" id="photo" /> or <a href="#">delete photo</a></span><br /><br /><br />
+                        <input type="text" name="firstname" value="{{ firstname }}" placeholder="First Name" maxlength="64" class="form-control" /><br />
+                        <input type="text" name="lastname" value="{{ lastname }}" placeholder="Last Name" maxlength="64" class="form-control" /><br />
+                        <button type="submit" name="button" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
-  {{> footer }}
+    {{> footer }}
 </body>
 </html>

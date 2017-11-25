@@ -13,7 +13,7 @@ if (isset($_COOKIE['uid_yousef'])) {
                                      'uid' => $_COOKIE['uid_yousef']));
 }
 else {
-    header('Location: /plogin.php', true, 302);
+    header('Location: plogin.php', true, 302);
 }
 
  ?>

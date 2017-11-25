@@ -43,9 +43,10 @@ if ($captcha_success->success==false) {
     $stmt = $link->prepare("INSERT INTO `members` (email,password,username)
                             VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $data["email"], $password, $data["username"]);
-    $success = $stmt->execute();
-    if (!$success) {
-        header('Location: /pregister.php?error=usernametaken', true, 302);
+    try {
+        $stmt->execute();
+    } catch (Exception $e) {
+        header('Location: pregister.php?error=usernametaken', true, 302);
     }
     // get the ID of the user we just made
     $id = mysqli_insert_id($link);
@@ -69,8 +70,8 @@ if ($captcha_success->success==false) {
     session_start();
 
     /// $_SESSION['session_token'] = bin2hex(random_bytes(32));
-    setcookie('uid_yousef', $id, time()+3600, "/", $DOMAIN, 0, 0);
+    setcookie('uid_yousef', $id, time()+3600, $BASE_URL, $DOMAIN, 0, 0);
     // go to verify.php
-    header('Location: /pverify.php', true, 302);
+    header('Location: pverify.php', true, 302);
 }
 ?>

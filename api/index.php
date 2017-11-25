@@ -20,5 +20,6 @@ echo $m->render('home',  array('firstname' => $user['firstName'],
                                  'username' => $user['username'],
                                  'profile_photo' => $user['profileImage'],
                                  'user_details' => isset($_COOKIE['uid_yousef']),
-                                 'error' => $error));
+                                 'error' => $error,
+                                 'psearch' => $_COOKIE['psearch_yousef']));
 ?>

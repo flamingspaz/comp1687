@@ -37,5 +37,5 @@ $stmt->bind_param("isssissi", $user,
                              $id);
 $stmt->execute();
 
-header("Location: /pcommute.php?id=$id", true, 302);
+header("Location: pcommute.php?id=$id", true, 302);
 ?>

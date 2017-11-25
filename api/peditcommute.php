@@ -7,7 +7,7 @@ if (isset($_COOKIE['uid_yousef'])) {
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: /index.php', true, 302);
+    header('Location: index.php', true, 302);
 }
 
 $stmt = $link->prepare("SELECT userId,arriveBy,provides,notes,daysAvailable,startPoint,destinationPoint FROM `commutes` WHERE id = ?");
@@ -21,7 +21,7 @@ if ($row['userId'] == $_COOKIE['uid_yousef']) {
     $owner = true;
 }
 if (!$owner) {
-    header('Location: /index.php?err=forbidden', true, 302);
+    header('Location: index.php?err=forbidden', true, 302);
 }
 if ($row['provides'] == 1) {
     $provides = 'checked';

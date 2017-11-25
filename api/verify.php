@@ -44,10 +44,10 @@ if ($verified) {
 //echo "{\"success\": \"$verified\", \"message\":\"$message\"}";
 
 if ($verified) {
-    header("Location: /pprofile.php", true, 302);
+    header("Location: pprofile.php", true, 302);
 }
 else {
-    header("Location: /pverify.php?error=vcincorrect", true, 302);
+    header("Location: pverify.php?error=vcincorrect", true, 302);
 }
 
 ?>

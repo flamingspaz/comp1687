@@ -45,7 +45,7 @@ if ($uploadOk == 0) {
         $stmt = $link->prepare("UPDATE `members` SET `profileImage` = ?, `firstName` = ?, `lastName` = ? WHERE id = ?");
         $stmt->bind_param("sssi", $newname, $_POST['firstname'], $_POST['lastname'], $user);
         $stmt->execute();
-        header('Location: /pprofile.php', true, 302);
+        header('Location: pprofile.php', true, 302);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

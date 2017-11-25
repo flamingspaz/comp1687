@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Home</title>
-        {{> headers-common }}
-    </head>
-    <body>
-        {{> header }}
-        <div class="container">
-            {{#error}}
-            <div class="alert alert-danger" role="alert">
-                {{error}}
-            </div>
-            {{/error}}
-    <h1 class="text-center">Improve traffic congestion in Greenwich. Carpool with locals.</h1>
-<form class="" action="psearch.php" method="get">
-<span>    <input type="text" name="text" value="" class="form-control" placeholder="Search our commutes" required maxlength="18" /><button type="submit" class="btn btn-primary" name="button"><i class="fa fa-search"></i></button><br />
-</span>
-</form>
+<head>
+    <title>Home</title>
+    {{> headers-common }}
+</head>
+<body>
+    {{> header }}
+    <div class="container">
+        {{#error}}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
         </div>
-        {{> footer }}
-    </body>
+        {{/error}}
+        <h1 class="text-center">Improve traffic congestion in Greenwich. Carpool with locals.</h1>
+        <form class="" action="psearch.php" method="get">
+            <span>    <input type="text" name="text" value="" class="form-control" placeholder="Search our commutes" required maxlength="18" /><button type="submit" class="btn btn-primary" name="button"><i class="fa fa-search"></i></button><br />
+                {{#psearch}}<p>Previous search: <a href="psearch.php?text={{psearch}}">{{psearch}}</a></p>{{/psearch}}
+            </span>
+        </form>
+    </div>
+    {{> footer }}
+</body>
 </html>

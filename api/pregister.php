@@ -5,7 +5,7 @@ if (!isset($_COOKIE['uid_yousef'])) {
                     'usernametaken' => isset($_GET['error'])));
 }
 else {
-    header('Location: /pprofile.php', true, 302);
+    header('Location: pprofile.php', true, 302);
 }
 
  ?>

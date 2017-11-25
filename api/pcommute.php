@@ -6,7 +6,7 @@ if (isset($_COOKIE['uid_yousef'])) {
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: /index.php', true, 302);
+    header('Location: index.php', true, 302);
 }
 
 $stmt = $link->prepare("SELECT userId,startPoint,destinationPoint,arriveBy,provides,notes,daysAvailable FROM `commutes` WHERE id = ?");

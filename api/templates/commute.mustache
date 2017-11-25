@@ -12,16 +12,16 @@
     {{> header }}
     <div id="map"></div><br /><br />
     <div class="container">
-<div class="row">
-    <h1>COMMUTE #<span id="commuteId">{{commuteId}}</span>{{#owner}}&nbsp;&nbsp;<a href="peditcommute.php?id={{commuteId}}"><button type="button" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i></button></a>{{/owner}}</h1>
-</div>        <div class="row">
+        <div class="row">
+            <h1>COMMUTE #<span id="commuteId">{{commuteId}}</span>{{#owner}}&nbsp;&nbsp;<a href="peditcommute.php?id={{commuteId}}"><button type="button" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i></button></a>{{/owner}}</h1>
+        </div>        <div class="row">
             <div class="col-xs-6">
                 {{^user_details}}
                 <h3>Log in or sign up to see user information</h3>
                 {{/user_details}}
                 {{#user_details}}
                 <h3>User details</h3>
-                <img width="100" height="100" class="circle-image" alt="{{firstname}} profile photo" src="{{#commuter_profile_photo}}/media/uploads/{{/commuter_profile_photo}}{{ commuter_profile_photo }}{{^commuter_profile_photo}}/static/img/default_profile.jpg{{/commuter_profile_photo}}">
+                <img width="100" height="100" class="circle-image" alt="{{firstname}} profile photo" src="{{#commuter_profile_photo}}media/uploads/{{/commuter_profile_photo}}{{ commuter_profile_photo }}{{^commuter_profile_photo}}static/img/default_profile.jpg{{/commuter_profile_photo}}">
                 <p><b>{{commuter_username}}</b></p>
                 <p>{{commuter_email}}</p>
                 {{/user_details}}
@@ -39,7 +39,7 @@
                 {{#commute_photos}}
                 <a href="/media/uploads/{{ name }}">
                     <span class="imagebox">
-                        <img width="200" src="/media/uploads/{{ name }}" alt="" />
+                        <img width="200" src="/media/uploads/{{ name }}" alt="A commute photo" />
                     </span>
                 </a>
                 {{/commute_photos}}

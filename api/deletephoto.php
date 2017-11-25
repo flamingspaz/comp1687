@@ -9,5 +9,5 @@ $stmt = $link->prepare("DELETE FROM `images` WHERE id = ?");
 $stmt->bind_param("i", $_GET['id']);
 $stmt->execute();
 
-header("Location: /peditcommute.php?id=$cid", true, 302);
+header("Location: peditcommute.php?id=$cid", true, 302);
 ?>
