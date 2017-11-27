@@ -22,8 +22,8 @@ if ($row[0] == crypt($data['password'], $row[0])) {
     $stmt->execute();
     $row = $stmt->get_result()->fetch_array(MYSQLI_ASSOC);
     session_start();
-    setcookie('uid_yousef', $row['id'], time()+3600, $BASE_URL, $DOMAIN, 0, 0);
-    setcookie('username_yousef', $data['username'], time()+3600, $BASE_PATH, $DOMAIN, 0, 0);
+    setcookie('uid_yousef', $row['id'], time()+3600, $BASE_URL, $DOMAIN, $SECURE_COOKIES, $SECURE_COOKIES);
+    setcookie('username_yousef', $data['username'], time()+3600, $BASE_PATH, $DOMAIN, $SECURE_COOKIES, $SECURE_COOKIES);
     if (!$row['active']) {
         header('Location: pverify.php', true, 302);
     }

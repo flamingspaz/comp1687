@@ -1,3 +1,5 @@
+// Adapted by me to work without inline javascript for CSP
+
 // https://gist.githubusercontent.com/bavington/6727776/raw/877d606a9c57564be88634bd576a076a29e72112/eu_cookie_banner.js
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
@@ -11,16 +13,15 @@ function createDiv(){
     var bodytag = document.getElementsByTagName('body')[0];
     var div = document.createElement('div');
     div.setAttribute('id','cookie-law');
-    div.innerHTML = '<p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a href="#" rel="nofollow" title="Privacy Policy">privacy policy</a>. <a class="close-cookie-banner" href="javascript:void(0);" onclick="removeMe();"><span>X</span></a></p>';
- // Be advised the Close Banner 'X' link requires jQuery
+    div.innerHTML = '<p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a href="#" rel="nofollow" title="Privacy Policy">privacy policy</a>. <button id="cookieclose" class="btn btn-secondary">Close</button></p>';
+    // Be advised the Close Banner 'X' link requires jQuery
 
     // bodytag.appendChild(div); // Adds the Cookie Law Banner just before the closing </body> tag
     // or
     bodytag.insertBefore(div,bodytag.firstChild); // Adds the Cookie Law Banner just after the opening <body> tag
 
     document.getElementsByTagName('body')[0].className+=' cookiebanner'; //Adds a class tothe <body> tag when the banner is visible
-
-    createCookie(window.cookieName,window.cookieValue, window.cookieDuration); // Create the cookie
+        document.getElementById('cookieclose').addEventListener('click', function() {removeMe();});
 }
 
 
@@ -58,6 +59,7 @@ window.onload = function(){
 }
 
 function removeMe(){
+createCookie(window.cookieName,window.cookieValue, window.cookieDuration); // Create the cookie
 	var element = document.getElementById('cookie-law');
 	element.parentNode.removeChild(element);
 }

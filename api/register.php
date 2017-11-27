@@ -70,7 +70,7 @@ if ($captcha_success->success==false) {
     session_start();
 
     /// $_SESSION['session_token'] = bin2hex(random_bytes(32));
-    setcookie('uid_yousef', $id, time()+3600, $BASE_URL, $DOMAIN, 0, 0);
+    setcookie('uid_yousef', $id, time()+3600, $BASE_URL, $DOMAIN, $SECURE_COOKIES, $SECURE_COOKIES);
     // go to verify.php
     header('Location: pverify.php', true, 302);
 }
