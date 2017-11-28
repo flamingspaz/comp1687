@@ -30,10 +30,14 @@ $options = array(
         'content' => http_build_query($redata)
     )
 );
-$context  = stream_context_create($options);
-$verify = file_get_contents($RECAPTCHA_URL, false, $context);
-$captcha_success=json_decode($verify);
-
+if (!$STUWEB) {
+    $context  = stream_context_create($options);
+    $verify = file_get_contents($RECAPTCHA_URL, false, $context);
+    $captcha_success=json_decode($verify);
+}
+else {
+    $captcha_success->success = true;
+}
 if ($captcha_success->success==false) {
     echo "<p>You are a bot! Go away!</p>";
 } else if ($captcha_success->success==true) {
